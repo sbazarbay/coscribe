@@ -1,9 +1,8 @@
 import express from 'express';
-import bodyParser from 'body-parser';
 import mongoose from 'mongoose';
 
 const app = express();
-app.use(bodyParser.json());
+app.use(express.json());
 
 mongoose.connect('mongodb://localhost:27017/auth')
   .then(() => {

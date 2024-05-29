@@ -1,20 +1,21 @@
 import express from 'express';
-import bodyParser from 'body-parser';
 import mongoose from 'mongoose';
 import { Server } from 'socket.io';
 import http from 'http';
+import jsonwebtoken from 'jsonwebtoken'
 
 const app = express();
 const server = http.createServer(app);
 const io = new Server(server);
 
-app.use(bodyParser.json());
+app.use(express.json());
 
-mongoose.connect('mongodb://localhost:27017/notes')
+mongoose
+  .connect('mongodb://localhost:27017/notes')
   .then(() => {
     console.log('Connected to MongoDB');
   })
-  .catch(err => {
+  .catch((err) => {
     console.error('Failed to connect to MongoDB', err);
   });
 
