@@ -2,7 +2,6 @@ import express from 'express';
 import mongoose from 'mongoose';
 import { Server } from 'socket.io';
 import http from 'http';
-import jsonwebtoken from 'jsonwebtoken'
 
 const app = express();
 const server = http.createServer(app);

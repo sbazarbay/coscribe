@@ -4,11 +4,12 @@ import mongoose from 'mongoose';
 const app = express();
 app.use(express.json());
 
-mongoose.connect('mongodb://localhost:27017/auth')
+mongoose
+  .connect('mongodb://localhost:27017/auth')
   .then(() => {
     console.log('Connected to MongoDB');
   })
-  .catch(err => {
+  .catch((err) => {
     console.error('Failed to connect to MongoDB', err);
   });
 
