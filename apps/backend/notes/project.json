@@ -1,0 +1,44 @@
+{
+  "name": "notes",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/backend/notes/src",
+  "projectType": "application",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@nx/webpack:webpack",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/apps/backend/notes",
+        "webpackConfig": "apps/backend/notes/webpack.config.js"
+      },
+      "configurations": {
+        "development": {
+          "optimization": false,
+          "sourceMap": true,
+          "extractLicenses": false
+        },
+        "production": {
+          "optimization": true,
+          "sourceMap": false,
+          "extractLicenses": true
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nx/js:node",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "notes:build"
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "notes:build:development"
+        },
+        "production": {
+          "buildTarget": "notes:build:production"
+        }
+      }
+    }
+  }
+}
